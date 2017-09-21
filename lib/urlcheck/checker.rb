@@ -30,7 +30,7 @@ module Urlcheck
     end
 
     def fetch(url, http: Typhoeus)
-      response = http.get(url, followlocation: true, headers: HEADERS)
+      response = http.get(url, followlocation: true, headers: HEADERS, ssl_verifypeer: false)
       code = response.code
 
       { url: url, code: code, exists: exists?(code) }
